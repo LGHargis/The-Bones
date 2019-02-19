@@ -1,15 +1,15 @@
 module.exports = function (sequelize, DataTypes) {
   //define the name of the model//
   var Translate = sequelize.define("Translate", {
-    title: {
+    translateFrom: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
-    body: {
-      type: DataTypes.TEXT,
+    translateTo: {
+      type: DataTypes.STRING,
       allowNull: false,
       len: [1]
     }
