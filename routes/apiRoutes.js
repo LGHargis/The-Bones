@@ -1,6 +1,7 @@
 var db = require("../models");
 
 module.exports = function (app) {
+  // User login routes.
   // Get all Users
   app.get("/api/Users", function (req, res) {
     db.User.findAll({}).then(function (dbUsers) {
@@ -8,17 +9,39 @@ module.exports = function (app) {
     });
   });
 
-  // Create a new example
+  // Create a new user
   app.post("/api/Users", function (req, res) {
-    db.User.create(req.body).then(function (dbExample) {
-      res.json(dbExample);
+    db.User.create(req.body).then(function (data) {
+      res.json(data);
     });
   });
 
-  // Delete an example by id
+  // Delete a user by id
   app.delete("/api/Users/:id", function (req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
-      res.json(dbExample);
+    db.User.destroy({ where: { id: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
+  });
+
+  // Translation routes.
+  // Get all translations.
+  app.get("/api/Translate", function (req, res) {
+    db.Translate.findAll({}).then(function (dbTranslate) {
+      res.json(dbUsers);
+    });
+  });
+
+  // Create a new translated text.
+  app.post("/api/Translate", function (req, res) {
+    db.Translate.create(req.body).then(function (data) {
+      res.json(data);
+    });
+  });
+
+  // Delete an translation by id
+  app.delete("/api/Translate/:id", function (req, res) {
+    db.Translate.destroy({ where: { id: req.params.id } }).then(function (data) {
+      res.json(data);
     });
   });
 };
